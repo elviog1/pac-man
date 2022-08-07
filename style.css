@@ -1,0 +1,173 @@
+.nav{
+    background-color: black;
+    position: relative;
+    height: 100px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    
+}
+
+.nav::before{
+    border-top: 10px dotted white;
+    position: absolute;
+    top:50%;
+    display: block;
+    content: "";
+    width: 100%;
+}
+
+/* PACMAN */
+.pacman{
+    position: absolute;
+    animation: mueve 4s linear infinite;
+    top: 25%;
+}
+
+.pacman::before, .pacman::after{
+    border: 30px solid yellow;
+    position: absolute;
+    display: block;
+    height: 0;
+    width: 0;
+    content: "";
+    border-right-color:transparent ;
+    border-bottom-color:transparent ;
+    border-radius: 50%;
+    
+    animation: comeTop 0.7s ease infinite;
+}
+
+.pacman::after{
+    border-color:yellow ;
+    
+    border-right-color:transparent ;
+    border-top-color:transparent ;
+    animation: comeBot 0.7s ease infinite;
+}
+
+/* FANTASMA */
+
+.fantasma{
+    position: absolute;
+    top: 25%;
+    border: 30px solid red;
+    border-top-left-radius: 40px ;
+    border-top-right-radius: 40px ;
+    animation: ghost 4s linear infinite,parpadeo 0.2s linear infinite;
+}
+
+
+
+ /* FANTASMA PIERNAS */
+.piernas{
+    position: absolute;
+    border:10px solid black;
+    border-top-color: transparent;
+    left: 10px;
+    top:20px;
+    border-top-color: transparent;
+}
+
+.piernas::after, .piernas::before{
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    display: block;
+    border:10px solid black;
+    border-top-color: transparent;
+    left: 10px;
+}
+
+.piernas::after{
+    left: -50px;
+    top: -10px;
+}
+.piernas::before{
+    top: -10px;
+    left: -30px;
+}
+
+/* OJOS FANTASMA */
+
+.ojos{
+    position: absolute;
+    background: white;
+    width: 23px;
+    height: 25px;
+    border-radius: 50%;
+    left: -25px;
+    top: -15px;
+}
+
+.der{
+    left: 2px;
+}
+
+ /* PUPILAS */
+.ojos::after, .ojos::before{
+    content: "";
+    width: 10px;
+    border-radius: 50%;
+    height: 10px;
+    background-color: black;
+    position: absolute;
+    top: 10px;
+    animation: pupilas 0.8s linear infinite;
+}
+
+@keyframes pupilas{
+    0%{
+        left:0%;
+    }
+    50%{
+
+        left: 50%;
+    }
+    100%{
+        left: 0%;
+    }
+}
+
+ /* MOVIMIENTOS */
+ /* BOCA PACMAN */
+@keyframes comeBot{
+    50%{
+        transform: rotate(-44deg);
+    }
+}
+
+@keyframes comeTop{ 
+    50%{
+        transform: rotate(44deg);
+    }   
+}
+
+ /* PACMAN Y FANTASMA */
+@keyframes mueve{
+    0%{
+        left: -30%;
+    }
+    100%{
+        left: 100%;
+    }
+}
+
+
+@keyframes ghost{
+    
+    0%{
+        left: -10%;   
+    }
+    100%{
+        left:120%; 
+    }
+}
+
+/* COLOR */ 
+@keyframes parpadeo{
+    50%{
+        border: 30px solid rgb(233, 26, 240);
+    }
+}
